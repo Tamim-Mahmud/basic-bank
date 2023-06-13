@@ -1,37 +1,31 @@
-document.getElementById('deposit-button').addEventListener('click',function(){
-    const newDepositAmmount=parseFloat(document.getElementById('deposit-field').value);
-    // console.log(newDepositAmmount);
-    const previousDeposit= parseFloat(document.getElementById('previous-deposit').innerText);
-    const previousBalance=parseFloat(document.getElementById('previous-balance').innerText);
-    // console.log(previousDeposit);
-   
+document.getElementById('deposit-button').addEventListener('click', function () {
 
-    const newDeposit = newDepositAmmount + previousDeposit;
-    // console.log(newDeposit);
-    if(!isNaN(newDepositAmmount) && newDepositAmmount>0){
-        document.getElementById('previous-deposit').innerText= newDeposit;
-        document.getElementById('previous-balance').innerText= previousBalance + newDepositAmmount;
+    const newDepositAmmount = getElementValueOrText('deposit-field');
+    const previousDeposit = getElementValueOrText('previous-deposit');
+    const previousBalance = getElementValueOrText('previous-balance');
+
+    if (!isNaN(newDepositAmmount) && newDepositAmmount > 0) {
+        setElementText('previous-deposit', newDepositAmmount + previousDeposit);
+        setElementText('previous-balance', previousBalance + newDepositAmmount);
     }
-    else{
+    else {
         alert('Please enter valid ammount');
-    } document.getElementById('deposit-field').value='';
+    }
+    document.getElementById('deposit-field').value = '';
 });
-document.getElementById('withdraw-button').addEventListener('click',function(){
-    const newWithdrawAmmount=parseFloat(document.getElementById('withdraw-field').value);
-    console.log(newWithdrawAmmount);
-    const previousWithdraw= parseFloat(document.getElementById('previous-withdraw').innerText);
-    const previousBalance=parseFloat(document.getElementById('previous-balance').innerText);
-    console.log(previousWithdraw);
-   
+document.getElementById('withdraw-button').addEventListener('click', function () {
+    const newWithdrawAmmount = getElementValueOrText('withdraw-field');
+    const previousWithdraw = getElementValueOrText('previous-withdraw');
+    const previousBalance = getElementValueOrText('previous-balance');
+
 
     const newWithdraw = newWithdrawAmmount + previousWithdraw;
-    // console.log(newDeposit);
-    if(!isNaN(newWithdrawAmmount)  && newWithdrawAmmount>0 && previousBalance >= newWithdrawAmmount){
-        document.getElementById('previous-withdraw').innerText = newWithdraw;
-        document.getElementById('previous-balance').innerText= previousBalance - newWithdrawAmmount;
+    if (!isNaN(newWithdrawAmmount) && newWithdrawAmmount > 0 && previousBalance >= newWithdrawAmmount) {
+        setElementText('previous-withdraw', newWithdraw);
+        setElementText('previous-balance', previousBalance - newWithdrawAmmount);
     }
-    else{
+    else {
         alert('Please enter valid ammount !');
-    } document.getElementById('withdraw-field').value='';
+    }
+     document.getElementById('withdraw-field').value = '';
 });
-document.getElementById('logout-btn').addEventListener('click')
