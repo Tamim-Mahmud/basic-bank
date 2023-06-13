@@ -34,3 +34,4 @@ document.getElementById('withdraw-button').addEventListener('click',function(){
         alert('Please enter valid ammount !');
     } document.getElementById('withdraw-field').value='';
 });
+document.getElementById('logout-btn').addEventListener('click')
