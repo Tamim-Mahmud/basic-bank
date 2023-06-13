@@ -26,7 +26,7 @@ document.getElementById('withdraw-button').addEventListener('click',function(){
 
     const newWithdraw = newWithdrawAmmount + previousWithdraw;
     // console.log(newDeposit);
-    if(!isNaN(newWithdrawAmmount)  && newWithdrawAmmount>0 ){
+    if(!isNaN(newWithdrawAmmount)  && newWithdrawAmmount>0 && previousBalance >= newWithdrawAmmount){
         document.getElementById('previous-withdraw').innerText = newWithdraw;
         document.getElementById('previous-balance').innerText= previousBalance - newWithdrawAmmount;
     }
